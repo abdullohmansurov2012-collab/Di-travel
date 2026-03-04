@@ -1,0 +1,7 @@
+{
+  "name": "Di Travel - Sizni butun dunyo kutmoqda!",
+  "description": "Di Travel - zamonaviy sayohatchilar uchun intellektual yordamchi. AI yordamida sayohat rejalarini tuzing, eng yaxshi manzillarni toping va dunyo bo'ylab unutilmas sarguzashtlarga tayyorlaning.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
