@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import MobileInfoPanel from './components/MobileInfoPanel';
 import Footer from './components/Footer';
 import PackageGrid from './components/PackageGrid';
 import DestinationGrid from './components/DestinationGrid';
@@ -109,7 +110,7 @@ const App: React.FC = () => {
     }, 2000); // 2 second mock loading transition
   };
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 4500);
+    const timer = setTimeout(() => setIsLoading(false), 5500);
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
@@ -140,6 +141,7 @@ const App: React.FC = () => {
             <Header />
             <main className="flex-grow pt-20 md:pt-28">
               <Hero />
+              <MobileInfoPanel />
 
               <section id="services" className="py-16 md:py-24 relative px-4">
                 <div className="max-w-7xl mx-auto">
