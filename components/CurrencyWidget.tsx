@@ -52,25 +52,25 @@ const CurrencyWidget: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center gap-3 md:gap-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-3 py-1.5 md:px-4 md:py-2">
-      <div className="flex items-center gap-2">
-        <span className="text-xl">{weatherData ? weatherData.icon : '☀️'}</span>
+    <div className="flex items-center gap-1 sm:gap-2 lg:gap-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-[8px] sm:rounded-full px-1.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2">
+      <div className="flex items-center gap-0.5 sm:gap-1.5 lg:gap-2">
+        <span className="text-sm sm:text-lg lg:text-xl drop-shadow-md">{weatherData ? weatherData.icon : '☀️'}</span>
         <div className="flex flex-col">
-          <span className="text-[10px] md:text-xs text-slate-400 font-medium leading-none mb-0.5">Toshkent</span>
-          <span className="text-xs md:text-sm text-white font-bold leading-none">
+          <span className="hidden sm:block text-[8px] lg:text-xs text-slate-400 font-medium leading-none mb-0.5">Toshkent</span>
+          <span className="text-[9px] sm:text-xs lg:text-sm text-white font-bold leading-none">
             {loading ? '...' : (weatherData ? `+${weatherData.temp}°C` : '+25°C')}
           </span>
         </div>
       </div>
 
-      <div className="w-[1px] h-6 bg-white/20"></div>
+      <div className="w-[1px] h-4 sm:h-5 lg:h-6 bg-white/20 mx-0.5 sm:mx-0"></div>
 
-      <div className="flex items-center gap-2">
-        <span className="text-green-400 text-sm md:text-base font-black">$</span>
+      <div className="flex items-center gap-0.5 sm:gap-1.5 lg:gap-2">
+        <span className="text-green-400 text-xs sm:text-sm lg:text-base font-black leading-none drop-shadow-md">$</span>
         <div className="flex flex-col">
-          <span className="text-[10px] md:text-xs text-slate-400 font-medium leading-none mb-0.5">USD</span>
-          <span className="text-xs md:text-sm text-white font-bold leading-none">
-            {loading ? '...' : (exchangeRate ? exchangeRate.toLocaleString('uz-UZ') : '12 850')} so'm
+          <span className="hidden sm:block text-[8px] lg:text-xs text-slate-400 font-medium leading-none mb-0.5">USD</span>
+          <span className="text-[9px] sm:text-xs lg:text-sm text-white font-bold leading-none">
+            {loading ? '...' : (exchangeRate ? exchangeRate.toLocaleString('uz-UZ') : '12 850')} <span className="hidden lg:inline">so'm</span>
           </span>
         </div>
       </div>
