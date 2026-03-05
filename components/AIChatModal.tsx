@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface AIChatModalProps {
     isOpen: boolean;
@@ -7,6 +7,8 @@ interface AIChatModalProps {
 }
 
 const AIChatModal: React.FC<AIChatModalProps> = ({ isOpen, onClose, botId }) => {
+    const [isIframeLoaded, setIsIframeLoaded] = useState(false);
+
     // Prevent body scroll when modal is open
     useEffect(() => {
         if (isOpen) {
@@ -56,12 +58,21 @@ const AIChatModal: React.FC<AIChatModalProps> = ({ isOpen, onClose, botId }) => 
                 </div>
 
                 {/* Jotform Iframe */}
-                <div className="flex-grow w-full bg-white relative">
+                <div className="flex-grow w-full relative bg-[#0f172a]">
+                    {!isIframeLoaded && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0f172a] z-10">
+                            <div className="w-16 h-16 border-4 border-white/10 border-t-blue-500 rounded-full animate-spin mb-6 shadow-[0_0_30px_rgba(59,130,246,0.5)]"></div>
+                            <div className="text-white font-bold text-lg animate-pulse tracking-widest">AI AGENT YUKLANMOQDA...</div>
+                            <div className="text-slate-400 text-xs mt-2 uppercase">Iltimos kuting</div>
+                        </div>
+                    )}
                     <iframe
                         src={`https://agent.jotform.com/${botId}?isIframe=true`}
-                        style={{ width: '100%', height: '100%', border: 'none' }}
+                        style={{ width: '100%', height: '100%', border: 'none', opacity: isIframeLoaded ? 1 : 0, transition: 'opacity 0.5s ease' }}
                         allow="microphone; camera"
                         title="Di Travel AI Agent"
+                        onLoad={() => setIsIframeLoaded(true)}
+                        className="bg-white"
                     ></iframe>
                 </div>
             </div>
