@@ -79,11 +79,14 @@ const Header: React.FC = () => {
             </h1>
           </div>
 
-          <div className="flex items-center gap-1 sm:gap-2 lg:gap-6 flex-shrink-0 overflow-hidden">
+          <div className="hidden lg:flex items-center gap-6 flex-shrink-0 overflow-hidden">
             <div className="flex-shrink-0">
               <AnalogClock />
             </div>
             <CurrencyWidget />
+          </div>
+
+          <div className="flex items-center flex-shrink-0">
             <a
               ref={btnRef}
               href={jotformLink}
