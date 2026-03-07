@@ -110,7 +110,7 @@ const App: React.FC = () => {
     }, 2000); // 2 second mock loading transition
   };
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 5500);
+    const timer = setTimeout(() => setIsLoading(false), 2500);
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
