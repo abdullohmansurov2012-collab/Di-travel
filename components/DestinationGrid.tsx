@@ -44,7 +44,7 @@ const DESTINATIONS: Destination[] = [
     name: 'Xiva',
     country: 'O\'zbekiston',
     description: 'Ming yillik tarixga ega ertaknamo shahar. Ichan Qala mo\'jizalari.',
-    image: '/images/samarkand.png', // Fallback to samarkand image due to AI limit for the 7th generated image
+    image: 'https://images.unsplash.com/photo-1627495068222-6b940bc753de?q=80&w=800&auto=format&fit=crop', // Used an external Khiva image
     rating: 4.8,
     price: '$30-70/kun',
     category: 'culture',

@@ -18,17 +18,17 @@ const Hero: React.FC = () => {
       const rect = ref.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       const deltaX = (x - centerX) / 10;
       const deltaY = (y - centerY) / 10;
 
       setGlowPos({ x, y });
-      setBtnTransform({ 
-        x: deltaX, 
-        y: deltaY, 
-        scale: size === 'small' ? 1.05 : 1.1, 
+      setBtnTransform({
+        x: deltaX,
+        y: deltaY,
+        scale: size === 'small' ? 1.05 : 1.1,
         rotate: deltaX * 0.4,
         skewX: deltaX * 0.1
       });
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
       setIsPressed(true);
       updateInteraction(e);
       if (typeof navigator !== 'undefined' && navigator.vibrate) {
-        navigator.vibrate(50);
+        navigator.vibrate(300);
       }
     };
 
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
     const isSmall = size === 'small';
 
     return (
-      <a 
+      <a
         ref={ref}
         href={href}
         target="_blank"
@@ -65,21 +65,18 @@ const Hero: React.FC = () => {
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onPointerMove={handlePointerMove}
-        style={{ 
+        style={{
           transform: `translate(${btnTransform.x}px, ${btnTransform.y}px) scale(${btnTransform.scale}) rotate(${btnTransform.rotate}deg) skewX(${btnTransform.skewX}deg)`,
           transition: isPressed ? 'none' : 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         }}
-        className={`rounded-full font-black transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group shadow-xl touch-none select-none whitespace-nowrap ${
-          isSmall 
-            ? 'px-6 py-3 text-[10px] md:px-8 md:py-4 md:text-xs bg-orange-500/80 backdrop-blur-2xl border border-white/20' 
+        className={`rounded-full font-black transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group shadow-xl touch-none select-none whitespace-nowrap ${isSmall
+            ? 'px-6 py-3 text-[10px] md:px-8 md:py-4 md:text-xs bg-orange-500/80 backdrop-blur-2xl border border-white/20'
             : 'px-8 py-5 md:px-12 md:py-7 lg:px-14 lg:py-8 text-base md:text-lg lg:text-xl'
-        } ${
-          isPrimary && !isSmall ? 'bg-orange-500 text-white shadow-orange-500/20 shadow-2xl' : ''
-        } ${
-          !isPrimary && !isSmall ? 'bg-white/5 border border-white/10 text-white backdrop-blur-3xl' : ''
-        }`}
+          } ${isPrimary && !isSmall ? 'bg-orange-500 text-white shadow-orange-500/20 shadow-2xl' : ''
+          } ${!isPrimary && !isSmall ? 'bg-white/5 border border-white/10 text-white backdrop-blur-3xl' : ''
+          }`}
       >
-        <div 
+        <div
           className={`absolute pointer-events-none transition-opacity duration-300 ${isPressed ? 'opacity-100' : 'opacity-0'}`}
           style={{
             left: glowPos.x,
@@ -111,10 +108,10 @@ const Hero: React.FC = () => {
             </span>
             Umra Safariga Marhamat
           </div>
-          
+
           <div className="space-y-6 md:space-y-8">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter">
-              Muqaddas Safar <br/>
+              Muqaddas Safar <br />
               <span className="whitespace-nowrap inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-orange-400 italic tracking-tighter pr-8 md:pr-16 py-2 drop-shadow-2xl animate-gradient-x">
                 Di&nbsp;Travel
               </span>
@@ -123,7 +120,7 @@ const Hero: React.FC = () => {
               Sizning muqaddas ziyoratingizni eng yuqori darajada, xavfsiz va qulay tashkil etamiz.
             </p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-5 md:gap-8 justify-center lg:justify-start pt-4">
             <GlowButton href={jotformLink} variant="primary">
               HOZIR BAND QILISH
@@ -136,23 +133,23 @@ const Hero: React.FC = () => {
             </GlowButton>
           </div>
         </div>
-        
+
         <div className="lg:w-1/2 relative w-full px-4 md:px-0">
           <div className="relative z-10 w-full aspect-[4/5] rounded-[50px] md:rounded-[80px] lg:rounded-[100px] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] border-[8px] md:border-[15px] border-white/10 group">
-            <img 
-              src={makkahImg} 
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[15s] ease-out brightness-90" 
-              alt="Makkah Kaaba" 
+            <img
+              src={makkahImg}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[15s] ease-out brightness-90"
+              alt="Makkah Kaaba"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-            
+
             <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 lg:bottom-16 lg:right-16 z-30">
               <GlowButton href={aiAgentLink} size="small">
                 AI REJA
               </GlowButton>
             </div>
           </div>
-          
+
           <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/10 rounded-full blur-[100px]"></div>
         </div>
       </div>

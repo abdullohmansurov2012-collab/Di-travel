@@ -19,17 +19,17 @@ const InteractiveLink = ({ href, children, className }: any) => {
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     const deltaX = (x - centerX) / 8;
     const deltaY = (y - centerY) / 8;
 
     setGlowPos({ x, y });
-    setBtnTransform({ 
-      x: deltaX, 
-      y: deltaY, 
-      scale: 1.05, 
+    setBtnTransform({
+      x: deltaX,
+      y: deltaY,
+      scale: 1.05,
       rotate: deltaX * 0.3,
       skewX: deltaX * 0.1
     });
@@ -40,7 +40,7 @@ const InteractiveLink = ({ href, children, className }: any) => {
     setIsPressed(true);
     updateInteraction(e);
     if (typeof navigator !== 'undefined' && navigator.vibrate) {
-      navigator.vibrate(50);
+      navigator.vibrate(300);
     }
   };
 
@@ -54,7 +54,7 @@ const InteractiveLink = ({ href, children, className }: any) => {
   };
 
   return (
-    <a 
+    <a
       ref={ref}
       href={href}
       target="_blank"
@@ -63,13 +63,13 @@ const InteractiveLink = ({ href, children, className }: any) => {
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}
       onPointerMove={handlePointerMove}
-      style={{ 
+      style={{
         transform: `translate(${btnTransform.x}px, ${btnTransform.y}px) scale(${btnTransform.scale}) rotate(${btnTransform.rotate}deg) skewX(${btnTransform.skewX}deg)`,
         transition: isPressed ? 'none' : 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
       }}
       className={`${className} relative overflow-hidden transition-all duration-300 touch-none whitespace-nowrap min-h-[50px]`}
     >
-      <div 
+      <div
         className={`absolute pointer-events-none transition-opacity duration-300 ${isPressed ? 'opacity-100' : 'opacity-0'}`}
         style={{
           left: glowPos.x,
